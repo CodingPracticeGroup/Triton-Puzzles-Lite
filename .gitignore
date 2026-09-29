@@ -1,2 +1,6 @@
 Trion-Puzzles/
 __pycache__/
+*.py[cod]
+
+# uv / virtualenv
+.venv/
