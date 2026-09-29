@@ -1,0 +1,26 @@
+[project]
+name = "triton-puzzles-lite"
+version = "0.0.0"
+description = "Puzzles for learning Triton (Lite Version)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.0",
+    "torch>=2.14.0",
+    "triton>=3.8.0",
+]
+
+[tool.uv]
+# This is a collection of scripts, not an installable package.
+package = false
+
+# torch is pulled from the CPU-only wheel index so that `uv sync` does not drag in
+# the several-GB CUDA runtime. Drop this block (or point it at the default PyPI
+# torch) if you want GPU-mode kernels.
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
